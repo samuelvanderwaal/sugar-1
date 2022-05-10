@@ -149,7 +149,7 @@ impl BundlrHandler {
         println!("{} {sig}", style("Signature:").bold());
 
         let mut map = HashMap::new();
-        map.insert("tx_id", "hi".to_string());
+        map.insert("tx_id", sig.to_string());
         let url = format!("{}/account/balance/solana", node);
         let response = http_client.post(&url).json(&map).send().await?;
 
