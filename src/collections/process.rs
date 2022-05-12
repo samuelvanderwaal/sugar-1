@@ -243,7 +243,7 @@ pub fn mint(
 
     // Check whitelist mint settings
     if let Some(wl_mint_settings) = &candy_machine_data.whitelist_mint_settings {
-        let whitelist_token = get_associated_token_address(&payer, &wl_mint_settings.mint);
+        let whitelist_token = get_associated_token_address(&wl_mint_settings.mint, &payer);
 
         additional_accounts.push(AccountMeta {
             pubkey: whitelist_token,
@@ -309,7 +309,7 @@ pub fn mint(
     if let Some(token_mint) = candy_machine_state.token_mint {
         let transfer_authority = Keypair::generate(&mut OsRng);
 
-        let user_paying_account_address = get_associated_token_address(&payer, &token_mint);
+        let user_paying_account_address = get_associated_token_address(&token_mint, &payer);
 
         additional_accounts.push(AccountMeta {
             pubkey: user_paying_account_address,

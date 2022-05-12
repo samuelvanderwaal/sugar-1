@@ -244,6 +244,7 @@ async fn run() -> Result<()> {
             cache,
             candy_machine,
         })?,
+        Commands::Collection { command } => (),
     }
 
     Ok(())
